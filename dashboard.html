@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Mahasiswa</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div id="toast" class="toast"></div>
+
+<!-- HEADER -->
+<header class="dashboard-header">
+    <h1>Portal Mahasiswa Universitas Pamulang</h1>
+    <a href="/logout" class="logout-btn">Logout</a>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="dashboard-container">
+
+    <section class="dashboard-content">
+        <h2>Manajemen Data Mahasiswa</h2>
+
+        <!-- FORM TAMBAH MAHASISWA -->
+        <form class="form-mahasiswa" method="POST" action="/tambah">
+            <input type="text" name="nim" placeholder="NIM" required>
+            <input type="text" name="nama" placeholder="Nama Mahasiswa" required>
+            <input type="text" name="jurusan" placeholder="Program Studi" required>
+            <button type="submit">Tambah</button>
+        </form>
+
+        <!-- FORM PENCARIAN -->
+<input type="text" id="searchInput" placeholder="Cari NIM atau Nama..." class="search-input">
+
+        <!-- TABEL DATA -->
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>NIM</th>
+                    <th>Nama</th>
+                    <th>Program Studi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if data|length == 0 %}
+                <tr>
+                    <td colspan="5" style="text-align:center;">
+                        Belum ada data mahasiswa
+                    </td>
+                </tr>
+                {% else %}
+                {% for mhs in data %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ mhs[1] }}</td>
+                    <td>{{ mhs[2] }}</td>
+                    <td>{{ mhs[3] }}</td>
+                    <td>
+                        <a href="/hapus/{{ mhs[0] }}" class="hapus-btn">Hapus</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+
+    </section>
+
+</main>
+<div class="watermark-logo"></div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

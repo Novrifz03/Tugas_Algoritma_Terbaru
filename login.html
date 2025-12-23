@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login UNPAM</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+
+<div id="toast" class="toast"></div>
+
+<div class="header">
+<img src="/static/images/logo_unpam.png">
+<h1>Portal Mahasiswa Universitas Pamulang</h1>
+<div class="toggle" onclick="toggleTheme()">🌙 / ☀️</div>
+</div>
+
+<div class="gedung fade-in">
+<div class="card">
+<h2>Login Mahasiswa</h2>
+<form method="post" onsubmit="return validasiLogin()">
+<input id="username" name="username" placeholder="Username">
+<div class="password-box">
+    <input id="password" type="password" name="password" placeholder="Password">
+    <span class="eye" onclick="togglePassword('password')">👁️</span>
+</div>
+
+<button>Login</button>
+<a href="/register">Daftar Akun</a>
+</form>
+</div>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
